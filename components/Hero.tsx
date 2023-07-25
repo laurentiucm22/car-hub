@@ -3,10 +3,11 @@
 import { FC } from "react";
 import { CustomeButtom } from "./index";
 import Image from "next/image";
-// import HeroCar from "@/public/hero.png";
+import HeroCar from "@/public/hero.png";
 
 const Hero: FC = () => {
   const handleScroll = () => {};
+
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">
@@ -26,7 +27,7 @@ const Hero: FC = () => {
       </div>
       <div className="hero__image-container">
         <div className="hero__image">
-          <Image src="/hero.png" alt="Car" fill className="object-contain" />
+          <Image src={HeroCar} alt="Car" fill objectFit="contain" />
           <div className="hero__image-overlay"></div>
         </div>
       </div>

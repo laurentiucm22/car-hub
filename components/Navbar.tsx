@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import CarHubLogo from "../public/logo.svg";
+import CarhubLogo from "../public/logo.svg";
 
 import { CustomeButtom } from "./";
 
@@ -10,7 +10,7 @@ const Navbar = () => {
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center px-6 sm:16 py-4 sha">
         <Link href="/" className="flex justify-center items-center">
           <Image
-            src={CarHubLogo}
+            src={CarhubLogo}
             alt="carhub logo"
             width={118}
             height={18}
