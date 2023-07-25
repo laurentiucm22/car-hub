@@ -21,15 +21,15 @@ const Hero: FC = () => {
 
         <CustomeButtom
           title="Explore Cars"
-          containerStyles="bg-primary-blue text-white rounded-full mt-10"
+          containerStyles="bg-primary-blue hover:bg-indigo-700 transition-all ease-in-out text-white rounded-full mt-10"
           handleClick={handleScroll}
         />
       </div>
       <div className="hero__image-container">
         <div className="hero__image">
           <Image src={HeroCar} alt="Car" fill objectFit="contain" />
-          <div className="hero__image-overlay"></div>
         </div>
+        <div className="hero__image-overlay"></div>
       </div>
     </div>
   );

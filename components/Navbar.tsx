@@ -21,7 +21,7 @@ const Navbar = () => {
         <CustomeButtom
           title="Sign In"
           btnType="button"
-          containerStyles="text-primary-blue rounded-full bg-zinc-100 min-w-[130px] font-bold shadow-md"
+          containerStyles="text-primary-blue rounded-full bg-zinc-100 hover:bg-zinc-300 transition-all ease-in-out min-w-[130px] font-extrabold shadow-md"
         />
       </nav>
     </header>
