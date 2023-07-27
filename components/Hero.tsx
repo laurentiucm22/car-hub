@@ -9,7 +9,7 @@ const Hero: FC = () => {
   const handleScroll = () => {};
 
   return (
-    <div className="hero">
+    <div className="hero overflow-hidden">
       <div className="flex-1 pt-36 padding-x">
         <h1 className="hero__title">
           Find, book, or rent a car - quickly and easily!
@@ -27,7 +27,13 @@ const Hero: FC = () => {
       </div>
       <div className="hero__image-container">
         <div className="hero__image">
-          <Image src={HeroCar} alt="Car" fill objectFit="contain" />
+          <Image
+            src={HeroCar}
+            alt="Car"
+            fill
+            className="object-contain"
+            quality={100}
+          />
         </div>
         <div className="hero__image-overlay"></div>
       </div>

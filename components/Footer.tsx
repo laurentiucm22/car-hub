@@ -13,7 +13,7 @@ const Footer = () => {
             alt="logo"
             width={118}
             height={18}
-            objectFit="contain"
+            className="object-contain"
           />
           <p className="font-bold text-black text-sm">
             The best cars since 1992
