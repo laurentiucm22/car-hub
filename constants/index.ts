@@ -1,4 +1,4 @@
-export const manufacturers = [
+export const manufacturersList = [
   "Acura",
   "Alfa Romeo",
   "Aston Martin",
@@ -40,7 +40,7 @@ export const manufacturers = [
   "Toyota",
   "Volkswagen",
   "Volvo",
-] as const;
+];
 
 export const yearsOfProduction = [
   { title: "Year", value: "" },
@@ -53,7 +53,7 @@ export const yearsOfProduction = [
   { title: "2021", value: "2021" },
   { title: "2022", value: "2022" },
   { title: "2023", value: "2023" },
-] as const;
+];
 
 export const fuels = [
   {
@@ -68,7 +68,7 @@ export const fuels = [
     title: "Electricity",
     value: "Electricity",
   },
-] as const;
+];
 
 export const footerLinks = [
   {
