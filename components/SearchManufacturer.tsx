@@ -50,7 +50,7 @@ const SearchManufacturer = ({
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="search-manufacturer__options custome__scrollbar">
+            <Combobox.Options className="search-manufacturer__options custome__scrollbar z-50">
               {filteredManufacturer.length === 0 && query !== "" ? (
                 <Combobox.Option
                   value={query}
@@ -71,7 +71,7 @@ const SearchManufacturer = ({
                       } transition-all ease-in-out`
                     }
                   >
-                    {({ selected, active }) => (
+                    {({ selected }) => (
                       <>
                         <span
                           className={selected ? "font-medium" : "font-regular"}

@@ -1,10 +1,20 @@
 import { CustomFilter, Hero, SearchBar } from "@/components";
 import { CarCard } from "@/components";
-import { CarsProp } from "@/types";
+import { CarsProp, FilterProps } from "@/types";
 import { fetchCars } from "@/utils";
 
-export default async function Home() {
-  const allCars: CarsProp[] = await fetchCars();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: FilterProps;
+}) {
+  const allCars: CarsProp[] = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "all",
+  });
 
   const isDataEmpty =
     !Array.isArray(allCars) || allCars.length === 0 || !allCars;
