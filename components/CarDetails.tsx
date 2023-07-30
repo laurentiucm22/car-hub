@@ -23,7 +23,7 @@ const CarDetails: FC<CarsDetailsProps> = ({ isOpen, car, closeModel }) => {
           as="div"
           open={isOpen}
           onClose={closeModel}
-          className="relative z-100 bg-black"
+          className="relative z-50 bg-black"
         >
           <Transition.Child
             as={Fragment}
@@ -48,7 +48,7 @@ const CarDetails: FC<CarsDetailsProps> = ({ isOpen, car, closeModel }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-lg max-h-[90hv] overflow-y-auto transform bg-white p-6 rounded-2xl text-left shadow-xl transition-all flex flex-col gap-5">
+                <Dialog.Panel className="relative w-full max-w-lg max-h-[90hv] overflow-y-auto transform bg-white p-6 rounded-2xl text-left shadow-xl transition-all flex flex-col gap-5 z-50">
                   <button
                     type="button"
                     onClick={closeModel}

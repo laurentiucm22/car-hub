@@ -1,4 +1,4 @@
-import { CarsProp } from "@/types";
+import { CarsProp, FilterProps } from "@/types";
 import { nanoid } from "nanoid";
 
 export const carsAPIoptions: {} = {
@@ -9,8 +9,10 @@ export const carsAPIoptions: {} = {
   },
 };
 
-export const fetchCars = async () => {
-  const baseUrl: string = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q3&limit=10`;
+export const fetchCars = async (filter: FilterProps) => {
+  const { manufacturer, model, year, fuel, limit } = filter;
+
+  const baseUrl: string = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&limit=${limit}&model=${model}&year=${year}&fuel_type=${fuel}`;
 
   try {
     const response = await fetch(`${baseUrl}`, carsAPIoptions);
