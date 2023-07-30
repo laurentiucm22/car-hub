@@ -98,4 +98,4 @@ export const footerLinks = [
       { title: "Facebook", url: "https://www.instagram.com/zoomclm/" },
     ],
   },
-] as const;
+];
