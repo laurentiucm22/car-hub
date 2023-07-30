@@ -1,7 +1,7 @@
 import { CarsProp } from "@/types";
 import { nanoid } from "nanoid";
 
-export const options: {} = {
+export const carsAPIoptions: {} = {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": process.env.CARS_API_KEY,
@@ -10,10 +10,10 @@ export const options: {} = {
 };
 
 export const fetchCars = async () => {
-  const baseUrl: string = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla&limit=6`;
+  const baseUrl: string = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q3&limit=10`;
 
   try {
-    const response = await fetch(`${baseUrl}`, options);
+    const response = await fetch(`${baseUrl}`, carsAPIoptions);
 
     const result = await response.json();
 
@@ -40,4 +40,19 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
   return rentalRatePerDay.toFixed(0);
+};
+
+export const generateCarImageUrl = (car: CarsProp, angle?: string) => {
+  const url = new URL("https://cdn.imagin.studio/getimage");
+
+  const { make, year, model } = car;
+
+  url.searchParams.append("customer", "hrjavascript-mastery");
+  url.searchParams.append("make", make);
+  url.searchParams.append("modelFamily", model.split(" ")[0]);
+  url.searchParams.append("zoomType", "fullscreen");
+  url.searchParams.append("modelYear", `${year}`);
+  url.searchParams.append("angle", `${angle}`);
+
+  return `${url}`;
 };

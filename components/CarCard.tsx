@@ -4,8 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { CarsProp } from "@/types";
 import { CarDetails, CustomeButtom } from ".";
-import { calculateCarRent } from "@/utils";
-import imagePlaceholder from "../public/hero.png";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import steeringWheelImg from "../public/steering-wheel.svg";
 import tireImg from "../public/tire.svg";
 import gasImg from "../public/gas.svg";
@@ -51,7 +50,7 @@ const CarCard = ({ car }: CarsCardProps) => {
 
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={imagePlaceholder}
+          src={generateCarImageUrl(car)}
           alt="car model"
           fill
           priority
@@ -96,7 +95,11 @@ const CarCard = ({ car }: CarsCardProps) => {
         </div>
       </div>
 
-      <CarDetails />
+      <CarDetails
+        isOpen={isOpen}
+        closeModel={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
