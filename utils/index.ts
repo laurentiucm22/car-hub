@@ -68,3 +68,14 @@ export const updateSearchParans = (type: string, value: string) => {
 
   return newPathname;
 };
+
+export const searchParamsScrollFixed = () => {
+  const persistentScroll = localStorage.getItem("persistentScroll");
+
+  if (persistentScroll === null) return;
+
+  window.scrollTo({ top: +persistentScroll });
+
+  if (+persistentScroll === window.scrollY)
+    localStorage.removeItem("persistentScroll");
+};

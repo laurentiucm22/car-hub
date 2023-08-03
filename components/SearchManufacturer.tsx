@@ -71,15 +71,7 @@ const SearchManufacturer = ({
                       } transition-all ease-in-out`
                     }
                   >
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className={selected ? "font-medium" : "font-regular"}
-                        >
-                          {item}
-                        </span>
-                      </>
-                    )}
+                    {item}
                   </Combobox.Option>
                 ))
               )}

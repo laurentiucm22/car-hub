@@ -1,14 +1,15 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { SearchManufacturer } from ".";
 import Image from "next/image";
 import magnifyIcon from "../public/magnifying-glass.svg";
 import carModelIcon from "../public/model-icon.png";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { searchParamsScrollFixed } from "@/utils";
 
-const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
-  <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
+const SearchButton = () => (
+  <button type="submit" className={"ml-1 z-10"}>
     <Image
       src={magnifyIcon}
       alt="magnifying glass"
@@ -23,6 +24,7 @@ const SearchBar: FC = () => {
   const [manufacturer, setManufacturer] = useState<string>("");
   const [model, setModel] = useState<string>("");
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const updateSearchParams = (model: string, manufacturer: string) => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -39,12 +41,18 @@ const SearchBar: FC = () => {
       searchParams.delete("manufacturer");
     }
 
-    const newPathname = `${
-      window.location.pathname
-    }?${searchParams.toString()}`;
+    localStorage.setItem("persistentScroll", window.scrollY.toString());
+
+    //prettier-ignore
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
 
     router.push(newPathname);
   };
+
+  useEffect(() => {
+    searchParamsScrollFixed();
+    return () => searchParamsScrollFixed();
+  }, [searchParams]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,10 +60,7 @@ const SearchBar: FC = () => {
     if (manufacturer === "" && model === "")
       return alert("Please fill in the search bar!");
 
-    updateSearchParams(
-      model.toLocaleLowerCase(),
-      manufacturer.toLocaleLowerCase()
-    );
+    updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
 
     setManufacturer("");
     setModel("");
@@ -86,7 +91,8 @@ const SearchBar: FC = () => {
             className="searchbar__input"
           />
         </div>
-        <SearchButton otherClasses="block" />
+
+        <SearchButton />
       </div>
     </form>
   );
