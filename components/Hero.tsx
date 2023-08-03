@@ -6,8 +6,6 @@ import Image from "next/image";
 import HeroCar from "@/public/hero.png";
 
 const Hero: FC = () => {
-  const handleScroll = () => {};
-
   return (
     <div className="hero overflow-hidden">
       <div className="flex-1 pt-36 padding-x">
@@ -22,7 +20,6 @@ const Hero: FC = () => {
         <CustomeButtom
           title="Explore Cars"
           containerStyles="bg-primary-blue hover:bg-indigo-700 transition-all ease-in-out text-white rounded-full mt-10"
-          handleClick={handleScroll}
         />
       </div>
       <div className="hero__image-container">

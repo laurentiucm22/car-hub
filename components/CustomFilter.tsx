@@ -5,18 +5,28 @@ import Image from "next/image";
 import chevronIcon from "../public/chevron-up-down.svg";
 import { Listbox, Transition } from "@headlessui/react";
 import { CustomeFilterProps } from "@/types";
-import { updateSearchParans } from "@/utils";
-import { useRouter } from "next/navigation";
+import { searchParamsScrollFixed, updateSearchParans } from "@/utils";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const CustomFilter = ({ title, options }: CustomeFilterProps) => {
   const [selected, setSelected] = useState(options[0]);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleUpdateParams = (e: { title: string; value: string }) => {
-    const newPathName = updateSearchParans(title, e.value.toLocaleLowerCase());
+    localStorage.setItem("persistentScroll", window.scrollY.toString());
 
+    const newPathName = updateSearchParans(
+      title.toLowerCase(),
+      e.value.toLowerCase()
+    );
     router.push(newPathName);
   };
+
+  useEffect(() => {
+    searchParamsScrollFixed();
+    return () => searchParamsScrollFixed();
+  }, [searchParams]);
 
   return (
     <div className="w-fit">
